@@ -65,7 +65,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
     }
     public void modificarUsuario(Usuario u){
      em.merge(u);
-    
+     
     }  
    public void modificarONG(ONG o){
      em.merge(o);
