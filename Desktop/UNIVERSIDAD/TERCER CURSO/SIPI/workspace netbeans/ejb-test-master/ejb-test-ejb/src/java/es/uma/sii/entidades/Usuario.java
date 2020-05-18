@@ -121,7 +121,7 @@ public class Usuario implements Serializable {
 
 	public Usuario()
     {
-       
+        
     }
 	public Usuario(String Usuario_Acceso,String Contraseña,String rol,String DNI, String Nombre, String Apellidos, String Email, String Actividad_Preferente) {
 		setUsuario_Acceso(Usuario_Acceso);
