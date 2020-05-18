@@ -71,5 +71,5 @@ public class BaseDeDatos implements BaseDeDatosLocal {
      em.merge(o);
     
     }  
-
+ 
 }
