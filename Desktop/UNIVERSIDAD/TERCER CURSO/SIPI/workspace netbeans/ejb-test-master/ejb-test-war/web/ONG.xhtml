@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+		xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+ 
+<ui:composition template="templates/layout.xhtml" >
+ 	<ui:define name="title">Bienvenido, 
+         
+        <h:outputText value="#{controlAutorizacion.ONG.usuario_Acceso}"/>
+    </ui:define>
+    
+ 	<ui:define name="content">
+ 		<c:choose>
+ 	  <c:when test="#{controlAutorizacion.hayONG()}">
+              
+               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url('resources/fotos/edit3.jpg')">
+         
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('resources/fotos/beneficios-voluntariado.jpg')">
+          
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url('resources/fotos/sonrisas.jpeg')">
+          
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+     <div class="container">
+	<div align="center">
+    	<h1 class="my-4">Estas a un paso de contribuir a un mundo mejor.
+    	<br>Por ti, por todos.</br>
+    	</h1>
+    </div>
+
+    <!-- Marketing Icons Section -->
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Sobre nosotros</h4>
+          <div class="card-body">
+            <p class="card-text"></p>
+          </div>
+         
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Actividades recientes</h4>
+          <div class="card-body">
+            <p class="card-text"></p>
+          </div>
+         
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Actividades destacadas</h4>
+          <div class="card-body">
+            <p class="card-text"></p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+
+  </div>
+            </c:when>
+            <c:otherwise>
+                <ui:include src="errorAutorizacion.xhtml"/>	<!-- Modificar mas adelante -->
+            </c:otherwise>
+        </c:choose>
+	
+	</ui:define>
+
+</ui:composition>
+</html>

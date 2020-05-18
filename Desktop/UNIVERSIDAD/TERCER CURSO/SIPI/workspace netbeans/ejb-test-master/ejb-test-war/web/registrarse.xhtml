@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+		xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+ 
+<ui:composition template="templates/layout.xhtml" >
+ 	<ui:define name="title">Registrarse</ui:define>
+	<ui:define name="content">
+	<body style="background-color:powderblue;">
+	<br></br>
+	<div align="center">
+ 		<h:form> 				<!-- hace falta el action xd -->
+	 		<p>Nombre: <h:inputText id="nombre" value="#{login.nuevo_Nombre}"></h:inputText></p>
+	 		<p>Apellidos: <h:inputText id="apellidos" value="#{login.nuevo_Apellidos}"></h:inputText></p>
+	 		<p>DNI:<h:inputText id="dni" value="#{login.nuevo_DNI}"></h:inputText></p>
+	 		<p>Rol: <h:inputText id="rol" value="#{login.nuevo_Tipo_usuario}"></h:inputText></p>
+	 		<p>Email: <h:inputText id="email" value="#{login.nuevo_Email}"></h:inputText></p>
+	 		<p>Nombre de Usuario: <h:inputText id="usuario_acceso" value="#{login.nuevo_Usuario_Acceso}"></h:inputText></p>
+	 		<p>Contraseña:  <h:inputSecret id="contraseña" value="#{login.nuevo_Contraseña}"></h:inputSecret></p>
+	 		<p>Repetir Contraseña: <h:inputSecret id="repetircontraseña" value="#{login.nuevo_repetirContraseña}"></h:inputSecret></p>
+	 		<p>Tipo de actividad preferente: <h:inputText id="actividad_preferente" value="#{login.nuevo_Actividad_Preferente}"></h:inputText></p>
+			
+	  	
+	  		<p>
+	  		<h:commandButton value="Enviar" action="#{login.procesarDatos()}"/>
+	  		<h:commandButton value="Cancelar" action="paginaprincipal.xhtml"/>
+                        <h:commandButton type="reset" value="Limpiar"/>
+
+	  		</p>
+ 		</h:form >
+ 		
+ 	</div>
+	</body>
+	</ui:define>
+
+</ui:composition>
+</html>

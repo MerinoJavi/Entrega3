@@ -1,0 +1,334 @@
+<!DOCTYPE html [ <!ENTITY nbsp "&#160;"> ]>
+<html xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+		xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<c:choose>
+<c:when test="#{controlAutorizacion.usuario.tipo_usuario.equalsIgnoreCase('ALUMNO')}">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <h:form>
+    	 <h:commandLink style="color: #17a2b8; " class="nav-link" action="#{controlAutorizacion.home()}" value="Home"/>
+      </h:form>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+    	 <li class="nav-item">
+            <a class="nav-link"> Bienvenido, 
+           
+               <h:outputText value="#{controlAutorizacion.usuario.nombre}"/>
+        
+            </a>
+          </li>
+		
+          <li class="nav-item">
+            <a class="nav-link" href="actividades.xhtml">Mis actividades</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Buscar
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="buscaractividades.xhtml">Actividades</a>
+              <a class="dropdown-item" href="buscarproyectos.xhtml">Proyectos</a>
+            </div>
+           </li>
+            <li class="nav-item">
+            <a class="nav-link" href="perfil.xhtml">Perfil</a>
+          </li>    
+           <h:form>
+           <c:if test="#{controlAutorizacion.usuario != null}">
+                        <li><h:commandLink class="nav-link" action="#{controlAutorizacion.logout()}" value="Salir"/></li>
+                    </c:if></h:form>
+
+        </ul>
+      </div>      
+    </div>
+  
+    
+  </nav>
+</c:when>
+<c:when test="#{controlAutorizacion.usuario.tipo_usuario.equalsIgnoreCase('ADMINISTRADOR')}">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <h:form>
+    	 <h:commandLink style="color: #17a2b8; " class="nav-link" action="#{controlAutorizacion.home()}" value="Home"/>
+      </h:form>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+    	 <li class="nav-item">
+            <a class="nav-link"> Bienvenido, 
+           
+               <h:outputText value="#{controlAutorizacion.usuario.nombre}"/>
+        
+            </a>
+          </li>
+		
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Solicitudes
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="solicitudesactividades.xhtml">Actividades</a>
+              <a class="dropdown-item" href="solicitudesONG.xhtml">ONG</a>
+            </div>
+           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Listar
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="listaradministradores.xhtml">Administradores</a>
+              <a class="dropdown-item" href="listarONGs.xhtml">ONG</a>
+            </div>
+           </li>
+            <li class="nav-item">
+            <a class="nav-link" href="perfil.xhtml">Perfil</a>
+          </li>    
+           <h:form>
+           <c:if test="#{controlAutorizacion.usuario != null}">
+                        <li><h:commandLink class="nav-link" action="#{controlAutorizacion.logout()}" value="Salir"/></li>
+                    </c:if></h:form>
+
+        </ul>
+      </div>      
+    </div>
+  
+    
+  </nav>
+
+</c:when>
+<c:when test="#{controlAutorizacion.hayONG()}">
+	 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <h:form>
+    	 <h:commandLink style="color: #17a2b8; " class="nav-link" action="#{controlAutorizacion.home()}" value="Home"/>
+      </h:form>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+    	 <li class="nav-item">
+            <a class="nav-link"> Bienvenido, 
+           
+               <h:outputText value="#{controlAutorizacion.ONG.nombre}"/>
+        
+            </a>
+          </li>
+		
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Listados
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="solicitudespendientesONG.xhtml">Solicitudes pendientes</a>
+              <a class="dropdown-item" href="usuariosinscritosONG.xhtml">Usuarios inscritos</a>
+              <a class="dropdown-item" href="valorarusuariosONG.xhtml">Valorar usuarios</a>
+            </div>
+           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Actividades
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="nuevaactividad.xhtml">Nueva actividad</a>
+              <a class="dropdown-item" href="consultaractividad.xhtml">Consultar actividad</a>
+            </div>
+           </li>
+            <li class="nav-item">
+            <a class="nav-link" href="perfil.xhtml">Perfil</a>
+          </li>    
+           <h:form>
+           <c:if test="#{controlAutorizacion.ONG != null}">
+                        <li><h:commandLink class="nav-link" action="#{controlAutorizacion.logout()}" value="Salir"/></li>
+                    </c:if></h:form>
+
+        </ul>
+      </div>      
+    </div>
+  
+    
+  </nav>
+</c:when>
+<c:when test="#{controlAutorizacion.usuario.tipo_usuario.equalsIgnoreCase('PDI')}">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <h:form>
+    	 <h:commandLink style="color: #17a2b8; " class="nav-link" action="#{controlAutorizacion.home()}" value="Home"/>
+      </h:form>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+    	 <li class="nav-item">
+            <a class="nav-link"> Bienvenido, 
+           
+               <h:outputText value="#{controlAutorizacion.usuario.nombre}"/>
+        
+            </a>
+             <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Buscar
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="buscaractividades.xhtml">Actividades</a>
+                 <a class="dropdown-item" href="buscarproyectos.xhtml">Proyectos</a>
+              
+          
+            </div>
+           </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Proyectos
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="solicitarproyectos.xhtml">Solicitar</a>
+            </div>
+           </li> 
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Actividades
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="validaractividades.xhtml">Validar</a>
+        
+            </div>
+           </li>
+           
+            <li class="nav-item">
+            <a class="nav-link" href="validarsolicitudalumnos.xhtml">Validar solicitud alumnos</a>
+          </li>    
+  			<li class="nav-item">
+            <a class="nav-link" href="actividades.xhtml">Mis actividades</a>
+          </li>    
+            <li class="nav-item">
+            <a class="nav-link" href="evaluaralumnos.xhtml">Evaluar alumnos</a>
+          </li>    
+         
+        
+            <li class="nav-item">
+            <a class="nav-link" href="perfil.xhtml">Perfil</a>
+          </li>    
+           <h:form>
+           <c:if test="#{controlAutorizacion.usuario != null}">
+                        <li><h:commandLink class="nav-link" action="#{controlAutorizacion.logout()}" value="Salir"/></li>
+                    </c:if></h:form>
+		</li>
+        </ul>
+      </div>      
+    </div>
+  
+    
+  </nav>
+
+</c:when>
+<c:when test="#{controlAutorizacion.usuario.tipo_usuario.equalsIgnoreCase('pas')}">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <h:form>
+    	 <h:commandLink style="color: #17a2b8; " class="nav-link" action="#{controlAutorizacion.home()}" value="Home"/>
+      </h:form>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+    	 <li class="nav-item">
+            <a class="nav-link"> Bienvenido, 
+           
+               <h:outputText value="#{controlAutorizacion.usuario.nombre}"/>
+        
+            </a>
+          </li>
+		
+          <li class="nav-item">
+            <a class="nav-link" href="actividades.xhtml">Mis actividades</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Buscar
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="buscaractividades.xhtml">Actividades</a>
+           
+            </div>
+           </li>
+            <li class="nav-item">
+            <a class="nav-link" href="perfil.xhtml">Perfil</a>
+          </li>    
+           <h:form>
+           <c:if test="#{controlAutorizacion.usuario != null}">
+                        <li><h:commandLink class="nav-link" action="#{controlAutorizacion.logout()}" value="Salir"/></li>
+                    </c:if></h:form>
+
+        </ul>
+      </div>      
+    </div>
+  
+    
+  </nav>
+</c:when>
+<c:otherwise>
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <h:form>
+    	  <h:commandLink style="color: #17a2b8; " action="#{controlAutorizacion.home()}" value="Home"/>
+      </h:form>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+        	
+        	
+          <li class="nav-item">
+             <c:choose>
+            <c:when test="#{controlAutorizacion.usuario == null}">
+                <h:form id="login">
+                    <table>
+                        <tr>
+                            <td style="color:white">Usuario:  </td>
+                            <td><h:inputText value="#{login.usuario}"/></td>
+                            <td style="color:white">&nbsp;Contraseña: </td>
+                            <td><h:inputSecret value="#{login.contrasenia}"/></td>
+                            <td colspan="2">
+                                <h:commandButton value="Autenticar" action="#{login.autenticar()}"/>
+                            </td>
+                      	<td>  <a class="nav-link" href="registrarse.xhtml" style="color: #17a2b8 ">Registrarse</a></td>
+                            
+                        </tr>
+                    </table>
+                </h:form>
+            </c:when>
+            <c:otherwise>
+                <p>Debe salir de la aplicacion si quiere entrar como otro usuario</p>
+                <h:form>
+                <li><h:commandLink class="nav-link" action="#{controlAutorizacion.logout()}" value="Salir"/></li>
+                </h:form>
+            </c:otherwise>
+        </c:choose>
+        <h:messages style="color: #9b2e23 "/>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</c:otherwise>
+</c:choose>
+</html>

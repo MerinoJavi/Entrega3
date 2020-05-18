@@ -1,0 +1,120 @@
+<!DOCTYPE html  [ <!ENTITY nbsp "&#160;"> ]>
+<html xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+		xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+ 
+<ui:composition template="templates/layout.xhtml" >
+ 	<ui:define name="title">Perfil 
+         
+        <h:outputText value="#{controlAutorizacion.usuario.usuario_Acceso}"/>
+    </ui:define>
+    
+ 	<ui:define name="content">
+ <body style="background-color:powderblue;">
+ 	<div align="center">
+ 		<div class="col-lg-4 mb-4" align="center">
+        <div class="card h-100">
+          <h4 class="card-header">Perfil</h4>
+          <div class="card-body">
+            <p class="card-text">
+            			<c:choose>
+ 
+         
+         
+         
+      <c:when test="#{controlAutorizacion.hayONG()==false}">
+            <p><b>Nombre: </b><h:outputText value="#{controlAutorizacion.usuario.nombre}"/></p>
+	 		<p><b>Apellidos: </b><h:outputText value="#{controlAutorizacion.usuario.apellidos}"/></p>
+	 		<p><b>DNI: </b><h:outputText value="#{controlAutorizacion.usuario.DNI}"/></p>
+	 		<p><b>Email: </b><h:outputText value="#{controlAutorizacion.usuario.email}"/></p>
+	 		<p><b>Nombre de Usuario: </b><h:outputText value="#{controlAutorizacion.usuario.usuario_Acceso}"/></p>
+	 		<p><b>Tipo de actividad preferente: </b><h:outputText  value="#{controlAutorizacion.usuario.actividad_Preferente}"/></p>
+	 		
+	 		
+       </c:when>
+       <c:when test="#{controlAutorizacion.hayONG()==true}">
+            <p><b>Nombre: </b><h:outputText value="#{controlAutorizacion.ONG.nombre}"/></p>
+         	<p><b>Identificador: </b><h:outputText value="#{controlAutorizacion.ONG.identificador}"/></p>
+	 		<p><b>Telefono: </b><h:outputText value="#{controlAutorizacion.ONG.telefono}"/></p>
+	 		<p><b>Persona de contacto: </b><h:outputText value="#{controlAutorizacion.ONG.persona_Contacto}"/></p>
+	 		<p><b>Email: </b><h:outputText value="#{controlAutorizacion.ONG.email}"/></p>
+	 		<p><b>Nombre de Usuario: </b><h:outputText value="#{controlAutorizacion.ONG.usuario_Acceso}"/></p>	 		
+	 	
+       </c:when>
+       
+            <c:otherwise>
+                <ui:include src="errorAutorizacion.xhtml"/>	<!-- Modificar mas adelante -->
+            </c:otherwise>
+        </c:choose>
+            
+            </p>
+          </div>
+          <div class="card-footer">
+              <h:form> 
+            <c:choose>
+            <c:when test="#{controlAutorizacion.hayONG()==false}">
+            <h:commandButton class="btn btn-primary" value="Modificar actividad preferente" action="#{perfil.setNumero(3)}"/>
+            	 		</c:when>
+                	 		</c:choose>
+
+              </h:form>
+	 		<p></p>
+                        <c:choose>
+	 		<c:when test="#{perfil.numero==3}">
+                          <h:form>
+                                <h:inputText id="nuevaactividadpreferente" value="#{login.nuevo_Actividad_Preferente}" />
+                               
+                            <h:commandButton value="Aceptar" action="#{login.cambiar_Actividad_Preferente()}" /> <!-- MENSAJES DE ERROR DEBERIAN SALIR, ARREGLAR!! -->
+			                           </h:form>	
+
+			 <h:messages style="color: #9b2e23 "/>
+			 
+	 		</c:when>
+                        </c:choose>
+	 		<p></p>
+                        <h:form>
+	 		<h:commandButton class="btn btn-primary"  value="Modificar contraseña" action="#{perfil.setNumero(1)}"/>
+                        </h:form>
+	 		<p></p>
+	 		<c:if test="#{perfil.numero==1}">
+                            <h:form>
+	 			<p>Antigua Contraseña: <h:inputSecret value="#{login.antiguacontrasenia}"/></p>
+	 		<p>Nueva Contraseña: <h:inputSecret value="#{login.nuevacontrasenia}"/></p>
+	 		<p>Repetir Contraseña: <h:inputSecret value="#{login.repetircontrasenia}"/></p>
+			 <h:commandButton value="Aceptar" action="#{login.cambiarContraseña()}"/>
+			 <h:commandButton value="Cancelar" action="#{perfil.setNumero(0)}"/>
+                            </h:form>
+	 		</c:if> 
+	 		<p></p>
+                        <h:form>
+	 		<h:commandButton class="btn btn-primary" value="Modificar email" action="#{perfil.setNumero(2)}"/>
+                        </h:form>
+	 		<p></p>
+	 		<c:if test="#{perfil.numero==2}">
+                            <h:form>
+	 			<p>Nuevo Email: <h:inputText value="#{login.nuevoemail}"/></p>
+			 <h:commandButton value="Aceptar" action="#{login.cambiarEmail()}"/> <!-- MENSAJES DE ERROR DEBERIAN SALIR, ARREGLAR!! -->
+			 <h:commandButton  value="Cancelar" action="#{perfil.setNumero(0)}"/>
+                            </h:form>
+			 <h:messages style="color: #9b2e23 "/>
+			 
+	 		</c:if>
+	 		
+	 		
+	 		
+	 		
+          </div>
+        </div>
+      </div>
+     </div>
+ 	</body>
+ 	
+ 	
+ 	
+	</ui:define>
+
+</ui:composition>
+</html>

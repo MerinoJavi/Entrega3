@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+ 
+<h:head>
+	<title> <ui:insert name="title">Sin titulo</ui:insert></title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<h:outputStylesheet name="vendor/bootstrap/css/bootstrap.css"/>
+    <h:outputStylesheet name="css/modern-business.css"/>
+    <h:outputScript name="vendor/jquery/jquery.min.js"/>
+    <h:outputScript name="vendor/bootstrap/js/bootstrap.bundle.min.js"/>
+     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+
+</h:head> 
+<h:body>
+	<h:panelGroup layout="block">
+		
+		<ui:include src="barranav.xhtml"/>
+ 		<ui:insert name="content"></ui:insert>
+	
+	</h:panelGroup>
+
+</h:body>
+</html>

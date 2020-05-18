@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+		xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+   
+      >
+ 
+<ui:composition template="templates/layout.xhtml" >
+ 	<ui:define name="title">Nueva actividad</ui:define>
+	<ui:define name="content">
+	<c:choose>
+<c:when test="#{controlAutorizacion.hayONG()==true}">
+	<body style="background-color:powderblue;">
+	<br></br>
+	<div align="center">
+ 		<h:form > 				<!-- hace falta el action xd -->
+	 		<p>Nombre: <h:inputText id="nombre"></h:inputText></p>
+	 		<p>Descripcion: <h:inputText id="descripcion" ></h:inputText></p>
+	 		<p>Lugar: <h:inputText id="lugar" ></h:inputText></p>
+	 		<p><label for="start">Fecha Inicio:</label>
+
+				<input type="date" id="inicio" name="trip-start"
+				       value="2018-07-22"
+				       min="2018-01-01" max="2020-12-31"/></p>
+					 		<p><label for="start">Fecha Fin:</label>
+				
+				<input type="date" id="fin" name="trip-start"
+				       value="2018-07-22"
+				       min="2018-01-01" max="2020-12-31"/></p>
+			<p>Tipo de actividad: <h:inputText id="fecha_xfin"></h:inputText></p>
+			
+	  	
+	  		<p>
+	  	
+	  		<h:commandButton value="Enviar" />
+	  			  		<h:commandButton value="Cancelar" />
+	  		
+	  		</p>
+	  		
+ 		</h:form >
+ 		
+ 	</div>
+	</body>
+	</c:when>
+	<c:otherwise>
+	
+	<ui:include src="errorAutorizacion.xhtml"/>	<!-- Modificar mas adelante -->
+  </c:otherwise>
+  </c:choose>
+	</ui:define>
+
+</ui:composition>
+</html>
